@@ -1,0 +1,21 @@
+Créé moi une page d'accueil pour un auto-entrepreneur qui travaille dans le digital (développement Web et applications IA, montage vidéos et graphisme)
+L'entreprise s'appelle E2 Nova Studio (https://www.e2nova-studio.fr/)
+
+Le site a pour objectif de présenter les pages suivantes:
+- 1 page d'accueil de présentation générale (comme le site https://www.e2nova-studio.fr/)
+- 1 page de présentation de l'auto-entrepreneur (A propos de moi)
+- 1 page Services qui présente les 3 compétences (Développement web & applications IA, Montage vidéo et Graphisme)
+- 1 page contact avec un formulaire de contact (en objet, créer un menu déroulant avec le choix des 3 compétences ainsi que "autres")
+- 1 page mentions légales
+
+L'univers visuel devra être le suivant :
+✔️ Style
+●	fond sombre (dark mode) 
+●	effets lumineux subtils 
+●	design épuré 
+✔️ Éléments graphiques
+●	lignes fines 
+●	glow bleu léger 
+●	formes arrondies tech
+
+ Technologies : html, css et js uniquement

@@ -147,12 +147,50 @@ p {
 }
 
 .hero {
+  position: relative;
+  isolation: isolate;
   display: grid;
   grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
   align-items: center;
   gap: 42px;
   min-height: calc(100vh - 92px);
   padding: 72px 0 52px;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: -72px;
+  right: min(-7vw, -42px);
+  bottom: -86px;
+  width: min(78vw, 980px);
+  background:
+    linear-gradient(90deg, var(--bg) 0%, rgba(1, 4, 12, 0.72) 16%, rgba(1, 4, 12, 0.06) 42%),
+    linear-gradient(180deg, var(--bg) 0%, rgba(1, 4, 12, 0) 18%, rgba(1, 4, 12, 0) 76%, var(--bg) 100%),
+    url("../assets/ordi.png") center right / cover no-repeat;
+  opacity: 0.9;
+  filter: saturate(1.08) contrast(1.04);
+  mask-image:
+    linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.18) 12%, #000 38%, #000 100%),
+    linear-gradient(180deg, transparent 0%, #000 16%, #000 82%, transparent 100%);
+  mask-composite: intersect;
+  -webkit-mask-image:
+    linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.18) 12%, #000 38%, #000 100%),
+    linear-gradient(180deg, transparent 0%, #000 16%, #000 82%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: -72px -9vw -86px 34%;
+  background:
+    radial-gradient(circle at 74% 42%, rgba(0, 153, 255, 0.28), transparent 28rem),
+    radial-gradient(circle at 88% 60%, rgba(113, 45, 255, 0.22), transparent 24rem);
+  pointer-events: none;
+  z-index: -2;
 }
 
 .hero-content,
@@ -163,10 +201,14 @@ p {
 .eyebrow {
   margin: 0 0 14px;
   color: var(--mint);
-  font-size: 0.78rem;
+  font-size: 0.95rem;
   font-weight: 800;
   letter-spacing: 0.12em;
   text-transform: uppercase;
+}
+
+.home-eyebrow {
+  font-size: 0.95rem;
 }
 
 h1,
@@ -255,22 +297,6 @@ h3 {
     linear-gradient(180deg, rgba(15, 28, 47, 0.86), rgba(8, 15, 26, 0.72)),
     radial-gradient(circle at 18% 20%, rgba(92, 200, 255, 0.22), transparent 18rem);
   box-shadow: var(--shadow);
-}
-
-.hero-image-showcase {
-  display: grid;
-  place-items: center;
-  min-height: 420px;
-}
-
-.hero-image-showcase img {
-  width: 100%;
-  max-width: 560px;
-  aspect-ratio: 16 / 10;
-  object-fit: cover;
-  border-radius: 8px;
-  border: 1px solid var(--line);
-  box-shadow: var(--shadow), 0 0 42px rgba(92, 200, 255, 0.24);
 }
 
 .orbit-card,
@@ -692,8 +718,11 @@ textarea:focus {
     grid-template-columns: 1fr;
   }
 
-  .hero-image-showcase {
-    min-height: auto;
+  .hero::before {
+    right: -38vw;
+    width: 118vw;
+    opacity: 0.42;
+    background-position: center right;
   }
 
   .service-preview,

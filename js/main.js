@@ -24,6 +24,21 @@ if (contactForm) {
   });
 }
 
+const centerHashTarget = () => {
+  if (!window.location.hash) return;
+
+  const target = document.querySelector(window.location.hash);
+
+  if (target) {
+    window.setTimeout(() => {
+      target.scrollIntoView({ block: "center", behavior: "smooth" });
+    }, 80);
+  }
+};
+
+centerHashTarget();
+window.addEventListener("hashchange", centerHashTarget);
+
 const canvas = document.querySelector(".nova-canvas");
 
 if (canvas) {

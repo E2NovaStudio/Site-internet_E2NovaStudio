@@ -86,10 +86,6 @@ p {
   backdrop-filter: blur(18px);
 }
 
-.home-header {
-  justify-content: flex-end;
-}
-
 .brand {
   display: inline-flex;
   align-items: center;
@@ -98,8 +94,8 @@ p {
 
 .brand img {
   display: block;
-  width: 168px;
-  height: 92px;
+  width: 204px;
+  height: 112px;
   object-fit: contain;
   border-radius: 8px;
 }
@@ -260,17 +256,20 @@ h3 {
   box-shadow: var(--shadow);
 }
 
-.hero-logo-showcase {
+.hero-image-showcase {
   display: grid;
   place-items: center;
   min-height: 420px;
 }
 
-.hero-logo-showcase img {
-  width: min(100%, 460px);
-  height: auto;
+.hero-image-showcase img {
+  width: 100%;
+  max-width: 560px;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
   border-radius: 8px;
-  filter: drop-shadow(0 0 34px rgba(92, 200, 255, 0.28));
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow), 0 0 42px rgba(92, 200, 255, 0.24);
 }
 
 .orbit-card,
@@ -692,7 +691,7 @@ textarea:focus {
     grid-template-columns: 1fr;
   }
 
-  .hero-logo-showcase {
+  .hero-image-showcase {
     min-height: auto;
   }
 
@@ -718,8 +717,8 @@ textarea:focus {
   }
 
   .brand img {
-    width: 124px;
-    height: 68px;
+    width: 152px;
+    height: 84px;
   }
 
   h1 {

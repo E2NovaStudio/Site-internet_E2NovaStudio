@@ -19,9 +19,15 @@
 * {
   box-sizing: border-box;
 }
+img,
+svg {
+  max-width: 100%;
+  height: auto;
+}
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -59,6 +65,14 @@ p {
   color: var(--muted);
   line-height: 1.75;
 }
+h1,
+h2,
+h3,
+h4,
+p,
+li {
+  overflow-wrap: break-word;
+}
 
 .nova-canvas {
   position: fixed;
@@ -77,6 +91,7 @@ p {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 16px;
   width: min(var(--max), calc(100% - 32px));
   margin: 16px auto 0;
   padding: 12px;
@@ -90,6 +105,7 @@ p {
 .brand {
   display: inline-flex;
   align-items: center;
+  flex: 0 1 auto;
   min-width: 0;
 }
 
@@ -112,6 +128,7 @@ p {
   border-radius: 999px;
   color: var(--muted);
   font-size: 0.94rem;
+  white-space: nowrap;
   transition: color 180ms ease, background 180ms ease, box-shadow 180ms ease;
 }
 
@@ -149,6 +166,7 @@ p {
 .hero {
   position: relative;
   isolation: isolate;
+  overflow: hidden;
   display: grid;
   grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
   align-items: center;
@@ -196,6 +214,18 @@ p {
 .hero-content,
 .page-hero {
   position: relative;
+}
+
+.hero-content,
+.page-hero,
+.content-stack,
+.detail-card > div,
+.service-card,
+.values-grid article,
+.cta-band,
+.contact-form,
+.legal-content article {
+  min-width: 0;
 }
 
 .eyebrow {
@@ -459,6 +489,13 @@ h3 {
   margin-top: 0;
 }
 
+.content-stack h4 {
+  margin: 20px 0 0;
+  color: var(--text);
+  font-size: 1.05rem;
+  line-height: 1.55;
+}
+
 .stat-row {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -571,6 +608,7 @@ input,
 select,
 textarea {
   width: 100%;
+  min-width: 0;
   border: 1px solid var(--line-soft);
   border-radius: 16px;
   padding: 14px 16px;
@@ -659,7 +697,7 @@ textarea:focus {
 
 @media (max-width: 920px) {
   .site-header {
-    align-items: flex-start;
+    align-items: center;
   }
 
   .nav-toggle {
@@ -680,6 +718,8 @@ textarea:focus {
     border-radius: 20px;
     background: rgba(5, 8, 15, 0.94);
     backdrop-filter: blur(18px);
+    max-height: calc(100vh - 132px);
+    overflow-y: auto;
   }
 
   .main-nav.open {
@@ -700,6 +740,7 @@ textarea:focus {
   .hero {
     min-height: auto;
     padding-top: 62px;
+    padding-bottom: 44px;
   }
 
   h1 {
@@ -719,10 +760,14 @@ textarea:focus {
   }
 
   .hero::before {
-    right: -38vw;
-    width: 118vw;
+    right: -16px;
+    width: min(100vw, 780px);
     opacity: 0.42;
     background-position: center right;
+  }
+
+  .hero::after {
+    inset: -56px -16px -56px 0;
   }
 
   .service-preview,
@@ -735,7 +780,16 @@ textarea:focus {
   }
 
   .portrait-block {
+    justify-self: center;
+    width: min(100%, 420px);
     max-width: 420px;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 920px) {
+  .service-preview,
+  .values-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -747,8 +801,8 @@ textarea:focus {
   }
 
   .brand img {
-    width: 152px;
-    height: 84px;
+    width: 132px;
+    height: 72px;
   }
 
   h1 {
@@ -797,5 +851,55 @@ textarea:focus {
   .site-footer {
     align-items: flex-start;
     flex-direction: column;
+  }
+}
+
+
+@media (max-width: 430px) {
+  .site-header,
+  .section,
+  .site-footer {
+    width: min(100% - 16px, var(--max));
+  }
+
+  .site-header {
+    margin-top: 8px;
+    padding: 8px;
+  }
+
+  .brand img {
+    width: 112px;
+    height: 62px;
+  }
+
+  .nav-toggle {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+  }
+
+  h1 {
+    font-size: 2.7rem;
+  }
+
+  .page-hero h1 {
+    font-size: 2.15rem;
+  }
+
+  h2 {
+    font-size: 1.75rem;
+  }
+
+  .page-hero {
+    padding: 54px 0 34px;
+  }
+
+  .hero {
+    padding-top: 46px;
+  }
+
+  .eyebrow {
+    font-size: 0.78rem;
+    line-height: 1.5;
   }
 }

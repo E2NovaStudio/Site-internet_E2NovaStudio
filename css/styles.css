@@ -94,8 +94,8 @@ li {
   gap: 16px;
   width: min(var(--max), calc(100% - 32px));
   margin: 16px auto 0;
-  padding: 8px 16px;
-  min-height: 120px;
+  padding: 6px 18px;
+  min-height: 135px;
   border: 1px solid var(--line-soft);
   border-radius: var(--radius);
   background: rgba(5, 8, 15, 0.72);
@@ -108,13 +108,15 @@ li {
   align-items: center;
   flex: 0 1 auto;
   min-width: 0;
+  padding-left: 18px;
 }
 
 .brand img {
   display: block;
-  height: 104px;
-  width: auto;
-  object-fit: contain;
+    height: 130px;
+    width: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 0 14px rgba(92,200,255,.20));
 }
 
 .main-nav {

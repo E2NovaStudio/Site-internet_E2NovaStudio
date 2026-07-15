@@ -94,7 +94,8 @@ li {
   gap: 16px;
   width: min(var(--max), calc(100% - 32px));
   margin: 16px auto 0;
-  padding: 12px;
+  padding: 8px 16px;
+  min-height: 120px;
   border: 1px solid var(--line-soft);
   border-radius: var(--radius);
   background: rgba(5, 8, 15, 0.72);
@@ -111,10 +112,9 @@ li {
 
 .brand img {
   display: block;
-  width: 204px;
-  height: 112px;
+  height: 104px;
+  width: auto;
   object-fit: contain;
-  border-radius: 8px;
 }
 
 .main-nav {

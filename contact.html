@@ -39,7 +39,28 @@
       </section>
 
       <section class="section contact-layout">
-        <form class="contact-form" action="#" method="post">
+        <form  id="contact-form"
+              class="contact-form"
+              action="https://api.web3forms.com/submit"
+              method="POST">
+        <input
+              type="hidden"
+              name="access_key"
+              value="9f40628a-5f39-41bd-ae69-275390aa14c1">
+        <input
+            type="hidden"
+            name="from_name"
+            value="E2 Nova Studio">
+        <input
+            type="hidden"
+            name="subject"
+            value="Nouvelle demande depuis le site E2 Nova Studio">
+        <input
+            type="checkbox"
+            name="botcheck"
+            class="hidden"
+            style="display:none">
+          
           <div class="form-row">
             <label for="name">Nom</label>
             <input id="name" name="name" type="text" autocomplete="name" required />
@@ -50,7 +71,7 @@
           </div>
           <div class="form-row">
             <label for="subject">Objet</label>
-            <select id="subject" name="subject" required>
+            <select id="subject" name="service" required>
               <option value="">Sélectionner un objet</option>
               <option value="developpement-web-ia">Développement web & applications IA</option>
               <option value="montage-video">Montage vidéo</option>
@@ -62,8 +83,22 @@
             <label for="message">Message</label>
             <textarea id="message" name="message" rows="7" required></textarea>
           </div>
+              <div class="form-row">
+                <label class="checkbox">
+                    <input
+                        type="checkbox"
+                        name="rgpd"
+                        required>
+                    J'accepte que les informations saisies soient utilisées pour être recontacté.
+                </label>
+            </div>
           <button class="button primary" type="submit">Envoyer la demande</button>
-          <p class="form-status" role="status" aria-live="polite"></p>
+          <p
+            id="form-status"
+            class="form-status"
+            role="status"
+            aria-live="polite">
+         </p>
         </form>
       </section>
     </main>

@@ -28,16 +28,43 @@ if (navToggle && mainNav) {
 const contactForm = document.querySelector(".contact-form");
 
 if (contactForm) {
-  contactForm.addEventListener("submit", (event) => {
+  const status = contactForm.querySelector(".form-status");
+  const submitButton = contactForm.querySelector('button[type="submit"]');
+  contactForm.addEventListener("submit", async (event) => {
     event.preventDefault();
-    const status = contactForm.querySelector(".form-status");
-
-    if (status) {
-      status.textContent =
-        "Merci, votre demande est prête. Le formulaire devra être relié à un service d'envoi pour partir réellement.";
+    if (!status || !submitButton) {
+      return;
     }
-
-    contactForm.reset();
+    const initialButtonText = submitButton.textContent;
+    status.textContent = "";
+    status.classList.remove("is-success", "is-error");
+    submitButton.disabled = true;
+    submitButton.textContent = "Envoi en cours…";
+    try {
+      const formData = new FormData(contactForm);
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
+      });
+      const result = await response.json();
+      if (!response.ok || !result.success) {
+        throw new Error(
+          result.message || "Le formulaire n’a pas pu être envoyé."
+        );
+      }
+      status.textContent =
+        "Merci, votre demande a bien été envoyée. Je vous répondrai dans les meilleurs délais.";
+      status.classList.add("is-success");
+      contactForm.reset();
+    } catch (error) {
+      console.error("Erreur lors de l’envoi du formulaire :", error);
+      status.textContent =
+        "L’envoi n’a pas abouti. Merci de réessayer ou d’écrire à contact@e2nova-studio.fr.";
+      status.classList.add("is-error");
+    } finally {
+      submitButton.disabled = false;
+      submitButton.textContent = initialButtonText;
+    }
   });
 }
 

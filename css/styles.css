@@ -921,4 +921,17 @@ textarea:focus {
     cursor: wait;
     opacity: 0.7;
   }
-}
+    .checkbox {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        cursor: pointer;
+        line-height: 1.5;
+    }
+    .checkbox input[type="checkbox"] {
+        width: 18px;
+        height: 18px;
+        margin: 0;
+        flex-shrink: 0;
+    }
+  }

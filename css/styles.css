@@ -599,6 +599,31 @@ h3 {
   gap: 8px;
 }
 
+/* Consentement RGPD */
+.form-row .checkbox {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+  line-height: 1.5;
+}
+
+.form-row .checkbox input[type="checkbox"] {
+  width: 18px;
+  min-width: 18px;
+  height: 18px;
+  margin: 4px 0 0;
+  padding: 0;
+  flex: 0 0 18px;
+  accent-color: var(--mint);
+}
+
+.form-row .checkbox span {
+  display: block;
+  flex: 1;
+}
+
 label {
   color: var(--text);
   font-weight: 800;
@@ -921,17 +946,4 @@ textarea:focus {
     cursor: wait;
     opacity: 0.7;
   }
-    .checkbox {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-        cursor: pointer;
-        line-height: 1.5;
-    }
-    .checkbox input[type="checkbox"] {
-        width: 18px;
-        height: 18px;
-        margin: 0;
-        flex-shrink: 0;
-    }
-  }
+}

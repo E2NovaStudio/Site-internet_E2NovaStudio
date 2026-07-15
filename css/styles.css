@@ -902,4 +902,23 @@ textarea:focus {
     font-size: 0.78rem;
     line-height: 1.5;
   }
+
+    .form-status {
+    min-height: 1.5em;
+    margin-top: 1rem;
+    font-weight: 600;
+  }
+  
+  .form-status.is-success {
+    color: #5fffd2;
+  }
+  
+  .form-status.is-error {
+    color: #ff8b8b;
+  }
+  
+  .contact-form button[type="submit"]:disabled {
+    cursor: wait;
+    opacity: 0.7;
+  }
 }

@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Explications du code - E2 Nova Studio</title>
+    <style>
+      @page {
+        size: A4;
+        margin: 17mm 15mm;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        color: #172033;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 10.8pt;
+        line-height: 1.5;
+        background: #ffffff;
+      }
+
+      h1,
+      h2,
+      h3 {
+        color: #071342;
+        line-height: 1.2;
+      }
+
+      h1 {
+        margin: 0 0 10px;
+        font-size: 26pt;
+      }
+
+      h2 {
+        margin: 26px 0 10px;
+        padding-bottom: 5px;
+        border-bottom: 1px solid #c9d6e8;
+        font-size: 17pt;
+        page-break-after: avoid;
+      }
+
+      h3 {
+        margin: 18px 0 8px;
+        font-size: 12.8pt;
+        page-break-after: avoid;
+      }
+
+      p {
+        margin: 0 0 8px;
+      }
+
+      ul {
+        margin: 6px 0 12px 18px;
+        padding: 0;
+      }
+
+      li {
+        margin: 0 0 6px;
+      }
+
+      code {
+        padding: 1px 4px;
+        border-radius: 3px;
+        color: #08315d;
+        background: #edf4fb;
+        font-family: Consolas, "Courier New", monospace;
+        font-size: 9.5pt;
+      }
+
+      .cover {
+        padding: 18px 0 22px;
+        border-bottom: 3px solid #22a7f2;
+        margin-bottom: 18px;
+      }
+
+      .subtitle {
+        color: #52627a;
+        font-size: 12.5pt;
+      }
+
+      .note {
+        padding: 10px 12px;
+        border-left: 4px solid #22a7f2;
+        margin: 12px 0;
+        background: #f2f8fd;
+      }
+
+      .toc {
+        display: grid;
+        gap: 4px;
+        padding: 10px 14px;
+        border: 1px solid #d7e4f0;
+        border-radius: 8px;
+        background: #f8fbfe;
+      }
+
+      .line-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 8px 0 16px;
+        page-break-inside: avoid;
+      }
+
+      .line-table th,
+      .line-table td {
+        vertical-align: top;
+        padding: 6px 7px;
+        border: 1px solid #dce6f1;
+      }
+
+      .line-table th {
+        color: #071342;
+        background: #eef5fc;
+        text-align: left;
+      }
+
+      .line-table td:first-child {
+        width: 108px;
+        color: #0b5591;
+        font-weight: 700;
+        white-space: nowrap;
+      }
+
+      .page-break {
+        page-break-before: always;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="cover">
+      <h1>Explications détaillées du code</h1>
+      <p class="subtitle">Projet E2 Nova Studio - fichiers <code>index.html</code>, <code>css/styles.css</code> et <code>js/main.js</code></p>
+      <p>Document généré pour comprendre la structure de la page d'accueil, son style visuel et les interactions JavaScript.</p>
+    </section>
+
+    <section class="note">
+      <p><strong>Remarque sur le nom du fichier CSS :</strong> la demande mentionne <code>style.css</code>, mais le fichier réellement utilisé par la page est <code>css/styles.css</code>, appelé à la ligne 11 de <code>index.html</code>.</p>
+    </section>
+
+    <h2>Vue d'ensemble</h2>
+    <div class="toc">
+      <p><strong><code>index.html</code></strong> contient le contenu de la page : métadonnées, en-tête, navigation, sections visibles, cartes de services et pied de page.</p>
+      <p><strong><code>css/styles.css</code></strong> définit l'identité visuelle : couleurs, grille, typographie, cartes, boutons, formulaire, animations visuelles de fond et responsive design.</p>
+      <p><strong><code>js/main.js</code></strong> ajoute le comportement : menu mobile, soumission du formulaire de contact, recentrage des ancres et animation de particules dans le canvas.</p>
+    </div>
+
+    <h2 class="page-break">index.html</h2>
+    <p>Ce fichier est la page d'accueil. Il ne contient pas de logique complexe : il assemble les éléments sémantiques que le CSS habille et que le JavaScript rend interactifs.</p>
+
+    <table class="line-table">
+      <thead>
+        <tr>
+          <th>Lignes</th>
+          <th>Explication</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td><code>&lt;!DOCTYPE html&gt;</code> indique au navigateur qu'il doit interpréter le document en HTML5.</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td><code>&lt;html lang="fr"&gt;</code> ouvre le document et précise que la langue principale est le français. C'est utile pour l'accessibilité, le référencement et les lecteurs d'écran.</td>
+        </tr>
+        <tr>
+          <td>3-13</td>
+          <td>Le bloc <code>&lt;head&gt;</code> contient les informations techniques : encodage, adaptation mobile, description SEO, titre de l'onglet, feuille de style et script JavaScript.</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td><code>UTF-8</code> permet d'afficher correctement les accents, le symbole © et les caractères comme <code>•</code>, <code>⌘</code>, <code>▶</code> ou <code>✦</code>.</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>La balise <code>viewport</code> rend le site responsive : la largeur de la page suit la largeur réelle de l'écran, notamment sur mobile.</td>
+        </tr>
+        <tr>
+          <td>6-9</td>
+          <td>La <code>meta description</code> résume l'activité d'E2 Nova Studio. Elle peut apparaître dans les résultats de recherche.</td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td>Le <code>&lt;title&gt;</code> nomme la page dans l'onglet du navigateur et donne aux moteurs de recherche le sujet principal.</td>
+        </tr>
+        <tr>
+          <td>11</td>
+          <td>Le lien CSS charge <code>css/styles.css</code>. Sans cette ligne, la page garderait une apparence HTML brute.</td>
+        </tr>
+        <tr>
+          <td>12</td>
+          <td>Le script <code>js/main.js</code> est chargé avec <code>defer</code>, ce qui attend que le HTML soit analysé avant d'exécuter le JavaScript.</td>
+        </tr>
+        <tr>
+          <td>14-15</td>
+          <td>Le <code>&lt;body&gt;</code> commence le contenu visible. Le <code>canvas</code> sert de surface de dessin pour l'animation de particules, tout en étant ignoré par les technologies d'assistance grâce à <code>aria-hidden</code>.</td>
+        </tr>
+        <tr>
+          <td>16-32</td>
+          <td>L'en-tête <code>site-header</code> regroupe le logo, le bouton du menu mobile et la navigation principale.</td>
+        </tr>
+        <tr>
+          <td>17-19</td>
+          <td>Le logo est un lien vers l'accueil. <code>aria-label</code> décrit l'action du lien, et <code>alt</code> décrit l'image.</td>
+        </tr>
+        <tr>
+          <td>20-24</td>
+          <td>Le bouton <code>nav-toggle</code> est le menu hamburger mobile. Ses trois <code>span</code> dessinent les trois barres. <code>aria-controls</code> relie le bouton à la navigation, et <code>aria-expanded</code> indique si le menu est ouvert.</td>
+        </tr>
+        <tr>
+          <td>25-31</td>
+          <td>La navigation contient les liens internes du site. La classe <code>active</code> marque visuellement la page courante.</td>
+        </tr>
+        <tr>
+          <td>34-48</td>
+          <td>Le contenu principal commence avec la section <code>hero</code>, première zone visible de la page. Elle présente la marque, la proposition de valeur et deux appels à l'action.</td>
+        </tr>
+        <tr>
+          <td>37</td>
+          <td>Le paragraphe <code>eyebrow home-eyebrow</code> sert de sur-titre compact. Le <code>&lt;br /&gt;</code> force un retour à la ligne entre les activités.</td>
+        </tr>
+        <tr>
+          <td>38</td>
+          <td>Le <code>h1</code> est le titre principal de la page. La classe <code>logo-gradient</code> applique le dégradé de texte défini dans le CSS.</td>
+        </tr>
+        <tr>
+          <td>39-42</td>
+          <td>Le paragraphe <code>hero-lead</code> explique l'offre en une phrase plus descriptive.</td>
+        </tr>
+        <tr>
+          <td>43-46</td>
+          <td>Les liens d'action sont stylés comme des boutons : l'un mène au contact, l'autre vers les services.</td>
+        </tr>
+        <tr>
+          <td>50-61</td>
+          <td>La section <code>intro-grid</code> présente l'approche. Elle est organisée en deux colonnes sur grand écran grâce au CSS.</td>
+        </tr>
+        <tr>
+          <td>63-91</td>
+          <td>La section <code>service-preview</code> affiche trois cartes de services. Chaque carte est un <code>article</code>, ce qui indique un bloc de contenu autonome.</td>
+        </tr>
+        <tr>
+          <td>64-72</td>
+          <td>Première carte : sites web et outils IA. Le lien <code>#web-ia</code> cible une section précise de <code>services.html</code>.</td>
+        </tr>
+        <tr>
+          <td>73-81</td>
+          <td>Deuxième carte : montage vidéo. Le symbole <code>▶</code> sert d'icône visuelle légère.</td>
+        </tr>
+        <tr>
+          <td>82-90</td>
+          <td>Troisième carte : graphisme. Le symbole <code>✦</code> renforce l'idée de création visuelle.</td>
+        </tr>
+        <tr>
+          <td>93-97</td>
+          <td>La section <code>cta-band</code> est un appel à l'action final avant le pied de page.</td>
+        </tr>
+        <tr>
+          <td>100-103</td>
+          <td>Le <code>footer</code> contient le copyright et un lien vers les mentions légales.</td>
+        </tr>
+        <tr>
+          <td>104-105</td>
+          <td>Fermeture du <code>body</code> puis du document HTML.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 class="page-break">css/styles.css</h2>
+    <p>Le CSS agit comme un système visuel global. Plusieurs règles concernent aussi les autres pages du site, pas seulement <code>index.html</code>, par exemple les blocs de contact, les pages de services ou les mentions légales.</p>
+
+    <h3>Fondations globales</h3>
+    <table class="line-table">
+      <thead>
+        <tr>
+          <th>Lignes</th>
+          <th>Explication</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1-17</td>
+          <td><code>:root</code> déclare des variables CSS globales : couleurs, ombres, rayon des bordures et largeur maximale. Cela évite de répéter les mêmes valeurs partout.</td>
+        </tr>
+        <tr>
+          <td>2-13</td>
+          <td>Les variables de couleur définissent l'univers visuel : fond sombre, panneaux bleutés, texte clair, bleu, menthe et violet.</td>
+        </tr>
+        <tr>
+          <td>14-16</td>
+          <td><code>--shadow</code>, <code>--radius</code> et <code>--max</code> standardisent les ombres, arrondis et largeurs de page.</td>
+        </tr>
+        <tr>
+          <td>19-21</td>
+          <td><code>box-sizing: border-box</code> rend les dimensions plus prévisibles : padding et bordures sont inclus dans la largeur totale.</td>
+        </tr>
+        <tr>
+          <td>22-26</td>
+          <td>Les images et SVG ne dépassent jamais leur conteneur, et gardent leur ratio avec <code>height: auto</code>.</td>
+        </tr>
+        <tr>
+          <td>28-31</td>
+          <td>Le défilement vers les ancres devient fluide, et le débordement horizontal est masqué.</td>
+        </tr>
+        <tr>
+          <td>33-44</td>
+          <td>Le <code>body</code> reçoit la police principale, la couleur de texte, la hauteur minimale et un fond composé de plusieurs gradients. Ces gradients créent l'ambiance spatiale et technologique.</td>
+        </tr>
+        <tr>
+          <td>46-57</td>
+          <td><code>body::before</code> ajoute une grille lumineuse en arrière-plan. Le pseudo-élément est fixe, non cliquable et placé derrière le contenu.</td>
+        </tr>
+        <tr>
+          <td>59-62</td>
+          <td>Les liens héritent de la couleur du contexte et perdent leur soulignement par défaut.</td>
+        </tr>
+        <tr>
+          <td>64-75</td>
+          <td>Les paragraphes reçoivent une couleur secondaire et un interligne confortable. Les titres, paragraphes et listes peuvent couper les mots longs pour éviter les débordements.</td>
+        </tr>
+        <tr>
+          <td>77-85</td>
+          <td><code>.nova-canvas</code> positionne le canvas d'animation en plein écran, derrière le site, sans bloquer les clics.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>En-tête et navigation</h3>
+    <table class="line-table">
+      <tbody>
+        <tr>
+          <td>87-104</td>
+          <td><code>.site-header</code> crée une barre de navigation collante : elle reste en haut de l'écran, centrée, avec fond transparent flouté, bordure et ombre.</td>
+        </tr>
+        <tr>
+          <td>106-112</td>
+          <td><code>.brand</code> aligne le logo dans l'en-tête et évite qu'il force une largeur trop grande.</td>
+        </tr>
+        <tr>
+          <td>114-120</td>
+          <td>L'image du logo est affichée en bloc, avec hauteur fixe, ratio conservé et halo bleu léger.</td>
+        </tr>
+        <tr>
+          <td>122-126</td>
+          <td><code>.main-nav</code> place les liens horizontalement avec un petit espacement.</td>
+        </tr>
+        <tr>
+          <td>128-135</td>
+          <td>Chaque lien de navigation devient une pastille : padding, arrondi complet, couleur discrète et transition douce.</td>
+        </tr>
+        <tr>
+          <td>137-142</td>
+          <td>Au survol ou sur la page active, le lien devient plus clair et reçoit un fond bleu très transparent.</td>
+        </tr>
+        <tr>
+          <td>144-152</td>
+          <td><code>.nav-toggle</code> est caché par défaut sur desktop. Il devient visible dans les media queries mobiles.</td>
+        </tr>
+        <tr>
+          <td>154-161</td>
+          <td>Les <code>span</code> du bouton dessinent les trois barres du menu hamburger.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Structure de page et hero</h3>
+    <table class="line-table">
+      <tbody>
+        <tr>
+          <td>163-166</td>
+          <td><code>.section</code> centre les sections et limite leur largeur avec <code>--max</code>, tout en gardant une marge latérale sur petits écrans.</td>
+        </tr>
+        <tr>
+          <td>168-178</td>
+          <td><code>.hero</code> est une grille à deux colonnes : contenu à gauche, espace visuel à droite. <code>isolation</code> aide à gérer les calques des pseudo-éléments.</td>
+        </tr>
+        <tr>
+          <td>180-203</td>
+          <td><code>.hero::before</code> ajoute l'image <code>assets/ordi.png</code> en arrière-plan, avec gradients et masques pour l'intégrer au fond sombre.</td>
+        </tr>
+        <tr>
+          <td>205-214</td>
+          <td><code>.hero::after</code> ajoute des halos bleus et violets derrière l'image pour renforcer la profondeur visuelle.</td>
+        </tr>
+        <tr>
+          <td>216-231</td>
+          <td>Ces règles placent certains blocs en contexte relatif et empêchent les contenus de forcer une largeur minimale trop grande dans les grilles.</td>
+        </tr>
+        <tr>
+          <td>233-244</td>
+          <td><code>.eyebrow</code> définit les petits sur-titres : texte menthe, gras, espacé et en capitales.</td>
+        </tr>
+        <tr>
+          <td>246-278</td>
+          <td>Les titres reçoivent des marges nulles, une couleur claire et des tailles différentes. Le <code>h1</code> est très grand sur desktop.</td>
+        </tr>
+        <tr>
+          <td>260-266</td>
+          <td><code>.logo-gradient</code> rend le texte transparent et affiche un dégradé dans les lettres grâce à <code>background-clip: text</code>.</td>
+        </tr>
+        <tr>
+          <td>280-285</td>
+          <td><code>.hero-lead</code> et les paragraphes de héros de pages internes ont une largeur limitée, une marge supérieure et une taille plus lisible.</td>
+        </tr>
+        <tr>
+          <td>287-320</td>
+          <td>Les boutons sont alignés en flex, arrondis, animés au survol, puis déclinés en bouton principal et bouton secondaire transparent.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Cartes, sections et contenus réutilisables</h3>
+    <table class="line-table">
+      <tbody>
+        <tr>
+          <td>322-332</td>
+          <td><code>.hero-panel</code> prépare un panneau décoratif. Il n'est pas utilisé dans <code>index.html</code> actuel, mais peut servir ailleurs ou dans une version précédente.</td>
+        </tr>
+        <tr>
+          <td>334-345</td>
+          <td>Plusieurs composants partagent le même style de carte : bordure fine, fond semi-transparent, ombre et flou de fond.</td>
+        </tr>
+        <tr>
+          <td>347-390</td>
+          <td>Les règles <code>.orbit-card</code>, <code>.service-symbol</code> et variantes stylent des cartes décoratives ou de services utilisées sur d'autres pages.</td>
+        </tr>
+        <tr>
+          <td>392-403</td>
+          <td><code>.intro-grid</code> crée la section d'introduction en deux colonnes, avec espacement vertical et bordure haute.</td>
+        </tr>
+        <tr>
+          <td>405-418</td>
+          <td><code>.service-preview</code> et <code>.values-grid</code> affichent trois colonnes de cartes. Les cartes ont une hauteur minimale, du padding et un arrondi cohérent.</td>
+        </tr>
+        <tr>
+          <td>420-430</td>
+          <td><code>.service-icon</code> dessine le carré qui contient l'icône de chaque carte de service.</td>
+        </tr>
+        <tr>
+          <td>432-442</td>
+          <td>Ces lignes ajustent l'espacement des textes de cartes et rendent les liens d'exploration visibles en couleur menthe.</td>
+        </tr>
+        <tr>
+          <td>444-458</td>
+          <td><code>.cta-band</code> crée le bandeau d'appel à l'action : bordure bleue, fond dégradé transparent, ombre et espace intérieur.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Pages internes, formulaire et pied de page</h3>
+    <table class="line-table">
+      <tbody>
+        <tr>
+          <td>460-488</td>
+          <td>Ces règles concernent les pages internes : héros de page, section en deux colonnes et bloc portrait carré avec image couvrante.</td>
+        </tr>
+        <tr>
+          <td>490-529</td>
+          <td><code>.content-stack</code> et <code>.stat-row</code> organisent les textes et statistiques, probablement sur la page À propos.</td>
+        </tr>
+        <tr>
+          <td>531-577</td>
+          <td><code>.services-detail</code> et <code>.detail-card</code> structurent les fiches détaillées de services : numéro, texte, liste sans puces natives et puce personnalisée menthe.</td>
+        </tr>
+        <tr>
+          <td>579-597</td>
+          <td><code>.contact-layout</code>, <code>.contact-form</code> et les éléments associés définissent la largeur, l'espacement et l'apparence de la zone de contact.</td>
+        </tr>
+        <tr>
+          <td>599-627</td>
+          <td>Ces règles gèrent les lignes de formulaire et la case RGPD : alignement horizontal, taille de case stable et couleur d'accent.</td>
+        </tr>
+        <tr>
+          <td>629-663</td>
+          <td>Les champs <code>input</code>, <code>select</code> et <code>textarea</code> ont une largeur complète, un fond sombre, une bordure, une police héritée et un halo au focus.</td>
+        </tr>
+        <tr>
+          <td>665-690</td>
+          <td><code>.form-status</code> réserve l'espace du message de retour, tandis que <code>.contact-aside</code> et <code>.contact-chip</code> stylent les informations complémentaires.</td>
+        </tr>
+        <tr>
+          <td>692-723</td>
+          <td>Les règles des mentions légales et du pied de page définissent les cartes de contenu légal et l'alignement du footer.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Responsive design</h3>
+    <table class="line-table">
+      <tbody>
+        <tr>
+          <td>725-814</td>
+          <td>À partir de 920 px et moins, le menu mobile apparaît, la navigation devient un panneau vertical masqué par défaut, les grilles passent en une colonne et les tailles de titres diminuent.</td>
+        </tr>
+        <tr>
+          <td>735-754</td>
+          <td>La navigation mobile est en position absolue sous l'en-tête. La classe <code>.open</code>, ajoutée par JavaScript, la rend visible.</td>
+        </tr>
+        <tr>
+          <td>789-798</td>
+          <td>L'image de fond du hero devient plus transparente et mieux positionnée sur écrans moyens.</td>
+        </tr>
+        <tr>
+          <td>816-821</td>
+          <td>Entre 641 px et 920 px, les grilles de services et valeurs passent à deux colonnes au lieu d'une seule.</td>
+        </tr>
+        <tr>
+          <td>823-882</td>
+          <td>À 640 px et moins, les marges latérales diminuent, le logo est réduit, les boutons prennent toute la largeur et les blocs complexes deviennent plus compacts.</td>
+        </tr>
+        <tr>
+          <td>885-951</td>
+          <td>À 430 px et moins, la version très mobile réduit encore l'en-tête, les titres et les espacements. Les lignes 939-950 ajoutent les couleurs de succès/erreur et l'état désactivé du bouton de formulaire.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 class="page-break">js/main.js</h2>
+    <p>Le JavaScript est écrit de manière défensive : chaque fonctionnalité vérifie d'abord que les éléments HTML existent. Cela permet au même fichier d'être chargé sur plusieurs pages sans provoquer d'erreurs.</p>
+
+    <h3>Menu mobile</h3>
+    <table class="line-table">
+      <tbody>
+        <tr>
+          <td>1-2</td>
+          <td>Le script récupère le bouton du menu mobile et la navigation principale avec <code>document.querySelector</code>.</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>La condition vérifie que les deux éléments existent avant d'ajouter des comportements.</td>
+        </tr>
+        <tr>
+          <td>5-8</td>
+          <td><code>closeNav</code> ferme le menu en retirant la classe <code>open</code> et en remettant <code>aria-expanded</code> à <code>false</code>.</td>
+        </tr>
+        <tr>
+          <td>10-13</td>
+          <td>Au clic sur le bouton, <code>classList.toggle("open")</code> ouvre ou ferme le menu. La valeur retournée est convertie en texte pour l'attribut ARIA.</td>
+        </tr>
+        <tr>
+          <td>15-17</td>
+          <td>Chaque lien du menu ferme la navigation au clic. C'est pratique sur mobile après avoir choisi une page.</td>
+        </tr>
+        <tr>
+          <td>19-21</td>
+          <td>Si la fenêtre repasse au-dessus de 920 px, le menu mobile est fermé pour éviter un état incohérent au changement de taille.</td>
+        </tr>
+        <tr>
+          <td>23-25</td>
+          <td>La touche Échap ferme aussi le menu, ce qui améliore l'accessibilité clavier.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Formulaire de contact</h3>
+    <table class="line-table">
+      <tbody>
+        <tr>
+          <td>28-32</td>
+          <td>Le script cherche le formulaire, le message de statut et le bouton d'envoi. Sur la page d'accueil, le formulaire n'existe pas, donc ce bloc ne s'exécute pas.</td>
+        </tr>
+        <tr>
+          <td>33-37</td>
+          <td>Lors de l'envoi, <code>event.preventDefault()</code> empêche le rechargement de page. Si le statut ou le bouton manque, la fonction s'arrête.</td>
+        </tr>
+        <tr>
+          <td>38-42</td>
+          <td>Le texte initial du bouton est conservé, le message est vidé, les classes de retour sont retirées, puis le bouton est désactivé avec le texte "Envoi en cours…".</td>
+        </tr>
+        <tr>
+          <td>43-49</td>
+          <td>Le bloc <code>try</code> prépare un <code>FormData</code> et envoie les données à Web3Forms via <code>fetch</code> en méthode POST.</td>
+        </tr>
+        <tr>
+          <td>50-54</td>
+          <td>Si la réponse HTTP échoue ou si Web3Forms renvoie <code>success: false</code>, une erreur est déclenchée avec un message explicite.</td>
+        </tr>
+        <tr>
+          <td>55-58</td>
+          <td>En cas de réussite, un message positif est affiché, la classe <code>is-success</code> est ajoutée et le formulaire est réinitialisé.</td>
+        </tr>
+        <tr>
+          <td>59-63</td>
+          <td>En cas d'erreur, le problème est écrit dans la console et un message d'échec est affiché à l'utilisateur avec la classe <code>is-error</code>.</td>
+        </tr>
+        <tr>
+          <td>64-67</td>
+          <td>Le bloc <code>finally</code> s'exécute dans tous les cas : il réactive le bouton et restaure son texte initial.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Ancres et défilement</h3>
+    <table class="line-table">
+      <tbody>
+        <tr>
+          <td>71-72</td>
+          <td><code>centerHashTarget</code> commence par vérifier si l'URL contient une ancre, par exemple <code>#web-ia</code>.</td>
+        </tr>
+        <tr>
+          <td>74</td>
+          <td>Le script cherche dans le document l'élément correspondant à cette ancre.</td>
+        </tr>
+        <tr>
+          <td>76-80</td>
+          <td>Si l'élément existe, un léger délai laisse la page se charger, puis <code>scrollIntoView</code> le place au centre de l'écran avec un défilement fluide.</td>
+        </tr>
+        <tr>
+          <td>83-84</td>
+          <td>La fonction est appelée au chargement, puis à chaque changement d'ancre dans l'URL.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Animation du canvas</h3>
+    <table class="line-table">
+      <tbody>
+        <tr>
+          <td>86-94</td>
+          <td>Le script récupère le canvas, son contexte 2D, initialise la liste de particules, la position du pointeur, les dimensions et l'identifiant d'animation.</td>
+        </tr>
+        <tr>
+          <td>96-109</td>
+          <td><code>createParticles</code> vide la liste puis crée un nombre de particules adapté à la taille de l'écran, entre 36 et 86.</td>
+        </tr>
+        <tr>
+          <td>101-107</td>
+          <td>Chaque particule reçoit une position aléatoire, une vitesse horizontale/verticale légère et une taille aléatoire.</td>
+        </tr>
+        <tr>
+          <td>111-121</td>
+          <td><code>resize</code> adapte le canvas à la taille de la fenêtre et au ratio de pixels de l'écran. Le ratio est limité à 2 pour garder de bonnes performances.</td>
+        </tr>
+        <tr>
+          <td>123-130</td>
+          <td><code>drawLine</code> dessine un segment bleu semi-transparent entre deux points. L'opacité est passée en paramètre.</td>
+        </tr>
+        <tr>
+          <td>132-147</td>
+          <td><code>render</code> efface le canvas, déplace chaque particule, la fait réapparaître de l'autre côté si elle sort de l'écran, puis la dessine sous forme de cercle.</td>
+        </tr>
+        <tr>
+          <td>149-156</td>
+          <td>Chaque particule est comparée aux suivantes. Si deux particules sont proches de moins de 118 px, une ligne les relie avec une opacité proportionnelle à leur distance.</td>
+        </tr>
+        <tr>
+          <td>158-164</td>
+          <td>Si le pointeur est actif, les particules proches de la souris ou du doigt sont reliées au pointeur jusqu'à 150 px.</td>
+        </tr>
+        <tr>
+          <td>167</td>
+          <td><code>requestAnimationFrame</code> relance <code>render</code> au prochain rafraîchissement de l'écran. C'est la boucle d'animation.</td>
+        </tr>
+        <tr>
+          <td>170-178</td>
+          <td>Les événements mettent à jour la taille du canvas, la position du pointeur et l'état actif/inactif du pointeur.</td>
+        </tr>
+        <tr>
+          <td>180-181</td>
+          <td>Le canvas est dimensionné une première fois, puis l'animation démarre.</td>
+        </tr>
+        <tr>
+          <td>183-189</td>
+          <td>Quand l'onglet devient masqué, l'animation est annulée pour économiser des ressources. Quand l'onglet redevient visible, elle reprend.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Relations entre les fichiers</h2>
+    <ul>
+      <li><code>index.html</code> crée le canvas ligne 15, <code>styles.css</code> le place en arrière-plan lignes 77-85, et <code>main.js</code> l'anime lignes 86-190.</li>
+      <li><code>index.html</code> crée le bouton mobile lignes 20-24, <code>styles.css</code> le dessine lignes 144-161 et l'affiche en mobile lignes 730-733, puis <code>main.js</code> le rend interactif lignes 1-26.</li>
+      <li>Les liens de services de <code>index.html</code> lignes 71, 80 et 89 pointent vers des ancres de <code>services.html</code>. <code>main.js</code> améliore leur positionnement à l'écran lignes 71-84.</li>
+      <li>Les classes comme <code>button</code>, <code>service-card</code>, <code>cta-band</code> et <code>hero</code> sont déclarées dans le HTML puis transformées visuellement par le CSS.</li>
+    </ul>
+
+    <h2>Points à surveiller</h2>
+    <ul>
+      <li>Les lignes 322-390 du CSS contiennent des styles de composants qui ne sont pas utilisés directement dans <code>index.html</code>, mais peuvent servir aux autres pages.</li>
+      <li>Les styles <code>.form-status.is-success</code> et <code>.form-status.is-error</code> sont actuellement placés dans la media query <code>max-width: 430px</code>. Sur desktop, les classes sont ajoutées par JavaScript, mais les couleurs spécifiques de succès/erreur ne s'appliquent pas forcément.</li>
+      <li>La ligne 116 du CSS est plus indentée que les autres propriétés du bloc <code>.brand img</code>. Ce n'est pas bloquant, mais un formatage homogène améliorerait la lisibilité.</li>
+    </ul>
+  </body>
+</html>
